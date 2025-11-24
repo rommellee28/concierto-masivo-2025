@@ -107,7 +107,9 @@
             display:flex;
             gap:8px;
             align-items:center;
-            flex-shrink:0; /* evitar que los controles se encojan cuando el título es largo */
+            width:100%; /* ocupar su propia fila bajo el título */
+            flex-wrap:wrap; /* permitir que audio y botones se reorganicen en pantallas pequeñas */
+            justify-content:center;
         }
         audio{ width:220px; max-width:100%; }
 
@@ -154,7 +156,8 @@
 
         @media (max-width:420px){
             .meta{flex-direction:column; align-items:flex-start;}
-            audio{width:100%}
+            .controls{flex-direction:column; align-items:stretch; gap:10px;}
+            audio{width:100%; max-width:100%;}
         }
 
 /* --- Estilos para el Botón de Alternancia de Tema --- */
