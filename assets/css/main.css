@@ -1,0 +1,191 @@
+:root {
+    /* Fondos */
+    --bg: #F5F5F5;      /* Fondo General (Gris muy claro) */
+    --card: #FFFFFF;    /* Fondo de las Tarjetas (Blanco Puro) */
+    --lyric-bg: #F9FCFF; /* Nuevo: Fondo Suave para las Letras */
+
+    /* Colores de Contenido */
+    --text-primary: #212121; /* Texto Principal (Gris casi negro) */
+    --text-secondary: #1A237E; /* Títulos (Índigo Oscuro) */
+    --text-subtitle: #0D47A1; /* Azul Zafiro Oscuro */
+    --text-muted: #616161;   /* Texto Secundario (p.lead, footer) */
+
+    /* Acentos y Botones */
+    --accent: #007BFF;   /* Azul Brillante para Botones principales (.btn) */
+    --btn-secondary-bg: #E6EEFC; /* Fondo para botones secundarios */
+    --btn-secondary-border: rgba(43, 138, 235, 0.12); /* Borde para botones secundarios */
+
+    --lyric-height: 500px; /* Mantener la altura original de las letras */
+}
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+            background: var(--bg);
+            color:var(--text-primary);
+            padding:24px;
+        }
+
+        /* --- ESTILOS PARA EL MODO OSCURO --- */
+
+        body.dark-mode {
+            /* Invertir colores de fondo y texto */
+            --bg: #121212;      /* Fondo General (Gris muy oscuro) */
+            --card: #1E1E1E;    /* Fondo de las Tarjetas (Gris oscuro, un tono más claro) */
+            --lyric-bg: #272727; /* Fondo para las Letras (Para contraste con la tarjeta) */
+
+            /* Invertir colores de texto */
+            --text-primary: #E0E0E0; /* Texto Principal (Gris casi blanco) */
+            --text-secondary: #BBDEFB; /* Títulos (Azul claro, legible) */
+           --text-subtitle: #90CAF9; /* Azul Cielo Claro */
+            --text-muted: #9E9E9E;   /* Texto Secundario (p.lead, footer) */
+
+            /* Ajustar Acentos para mejor visibilidad en fondos oscuros */
+            --accent: #188ceb;   /* Azul Claro para Botones */
+            --btn-secondary-bg: #303030; /* Fondo para botones secundarios oscuro */
+            --btn-secondary-border: #424242; /* Borde para botones secundarios oscuro */
+        }
+
+        /* Ajuste específico para el borde de la letra en modo oscuro */
+        body.dark-mode .lyrics {
+            border: 1px solid #424242;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:0 auto;
+            padding:0 12px;
+        }
+
+        header{
+            text-align:center;
+            margin-bottom:18px;
+        }
+        h1{
+            margin:0;
+            font-size:1.6rem;
+            letter-spacing:0.6px;
+            color: var(--text-secondary);
+        }
+        p.lead{
+            margin:6px 0 0;
+            color:var(--text-muted);
+            font-size:0.95rem;
+        }
+
+        .grid{
+            display:grid;
+            gap:16px;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            margin-top:18px;
+        }
+
+        .card{
+            background:var(--card);
+            border-radius:10px;
+            padding:14px;
+            box-shadow:0 1px 3px rgba(15,23,42,0.04), 0 6px 18px rgba(11,22,72,0.06);
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+
+        .meta{
+            display:flex;
+            flex-direction:column; /* colocar el título encima de los controles */
+            align-items:flex-start;
+            gap:8px;
+        }
+        .title{
+            font-weight:600;
+            font-size:1rem;
+            text-align: center;
+            width:100%; /* ocupar su propia fila */
+            word-break:break-word; /* permitir que el título haga wrap en pantallas pequeñas */
+        }
+        .controls{
+            display:flex;
+            gap:8px;
+            align-items:center;
+            flex-shrink:0; /* evitar que los controles se encojan cuando el título es largo */
+        }
+        audio{ width:220px; max-width:100%; }
+
+        .btn{
+            background:var(--accent);
+            color:#fff;
+            border:none;
+            padding:8px 10px;
+            border-radius:6px;
+            text-decoration:none;
+            cursor:pointer;
+            font-size:0.9rem;
+        }
+        .btn.secondary{
+            background:#e6eefc;
+            color:var(--accent);
+            border:1px solid rgba(43,138,235,0.12);
+        }
+
+        .lyrics{
+            background:var(--lyric-bg);
+            border:1px solid #D0E0FF;
+            padding:10px;
+            border-radius:6px;
+            min-height:var(--lyric-height);
+            height:var(--lyric-height);
+            overflow:auto;
+            color:var(--text-primary);
+            font-size:0.95rem;
+            line-height:1.4;
+            white-space:pre-wrap;
+        }
+
+        .subtitle {
+            color: var(--text-subtitle);
+        }
+
+        footer{
+            margin-top:18px;
+            text-align:center;
+            color:var(--text-muted);
+            font-size:0.9rem;
+        }
+
+        @media (max-width:420px){
+            .meta{flex-direction:column; align-items:flex-start;}
+            audio{width:100%}
+        }
+
+/* --- Estilos para el Botón de Alternancia de Tema --- */
+.theme-toggle {
+    background: transparent;
+    color: var(--text-primary); /* Se adapta al texto principal del tema */
+    border: 1px solid var(--text-muted);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.05); /* Un hover sutil en modo claro */
+}
+
+/* Ajustes de icono para el modo oscuro */
+body.dark-mode .theme-toggle {
+    background: rgba(255, 255, 255, 0.05); /* Un hover sutil en modo oscuro */
+    color: var(--text-primary);
+    border: 1px solid var(--text-muted);
+}
+
+/* Cambia el icono y el texto en Modo Oscuro */
+body.dark-mode .theme-toggle i.fa-moon:before {
+    content: "\f185"; /* Cambia el ícono de Luna a Sol (fa-sun) */
+}
+
+body.dark-mode .theme-toggle {
+    content: "\f185";
+}
