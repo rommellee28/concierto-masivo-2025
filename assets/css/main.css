@@ -110,8 +110,10 @@
             width:100%; /* ocupar su propia fila bajo el título */
             flex-wrap:wrap; /* permitir que audio y botones se reorganicen en pantallas pequeñas */
             justify-content:center;
+            flex-direction: column;
+            align-items: flex-start; /* Alinea el reproductor y el botón a la izquierda */
         }
-        audio{ width:220px; max-width:100%; }
+        audio{ width:100%; max-width:100%; }
 
         .btn{
             background:var(--accent);
@@ -122,6 +124,8 @@
             text-decoration:none;
             cursor:pointer;
             font-size:0.9rem;
+            width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+            text-align: center;
         }
         .btn.secondary{
             background:#e6eefc;
